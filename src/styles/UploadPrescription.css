@@ -1,0 +1,184 @@
+/* Full-Screen Upload Page with Parallax Background */
+
+.upload-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: url("../assets/image.png") no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    animation: bgParallax 20s infinite alternate ease-in-out;
+}
+
+
+/* Dark Overlay for Readability */
+
+.upload-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+/* Ensure Content is Above Overlay */
+
+.upload-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Upload Box */
+
+.upload-box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.3);
+    width: 400px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: slideInRight 1.2s ease-out;
+}
+
+
+/* Title */
+
+.upload-box h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+
+/* File Input */
+
+.upload-box input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+.upload-box input[type="file"]:focus {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 15px rgba(0, 255, 150, 0.6);
+    border: 1px solid rgba(0, 255, 150, 0.8);
+}
+
+
+/* Preview Image */
+
+.preview-image {
+    width: 100%;
+    max-height: 200px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+/* Upload Button */
+
+.upload-box button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #22c55e, #16a085);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 255, 150, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-box button:hover {
+    background: linear-gradient(135deg, #1abc9c, #0f9b58);
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 255, 150, 0.6);
+}
+
+
+/* Button Pulse Animation */
+
+.upload-box button::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 50%);
+    top: -50%;
+    left: -50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.upload-box button:hover::before {
+    opacity: 1;
+    animation: pulse 1s infinite alternate ease-in-out;
+}
+
+
+/* Animations */
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bgParallax {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center bottom;
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}

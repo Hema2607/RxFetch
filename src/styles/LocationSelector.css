@@ -1,0 +1,157 @@
+/* Location Selector Full-Screen Container */
+
+.location-selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background: url("../assets/image.png") no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    animation: bgParallax 20s infinite alternate ease-in-out;
+}
+
+
+/* Dark Overlay for Readability */
+
+.location-selector-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+/* Ensure Content is Above Overlay */
+
+.location-selector-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Title */
+
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+
+/* Map Container */
+
+.map {
+    width: 75%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.map:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.5);
+}
+
+
+/* Confirm Button */
+
+.confirm-btn {
+    margin-top: 20px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0f9b0f, #8cc084);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    letter-spacing: 0.8px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Button Hover Effect */
+
+.confirm-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 5px 15px rgba(15, 155, 15, 0.5);
+}
+
+
+/* Button Pulse Animation */
+
+.confirm-btn::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 50%);
+    top: -50%;
+    left: -50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.confirm-btn:hover::before {
+    opacity: 1;
+    animation: pulse 1s infinite alternate ease-in-out;
+}
+
+
+/* Fade-In Animation */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Parallax Background Animation */
+
+@keyframes bgParallax {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center bottom;
+    }
+}
+
+
+/* Button Pulse */
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}

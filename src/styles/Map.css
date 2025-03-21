@@ -1,0 +1,191 @@
+/* Full-screen Map Page with Parallax Background */
+
+.map-page-container {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: url("../assets/map-bg.png") no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+    animation: bgParallax 20s infinite alternate ease-in-out;
+    /* Background subtle motion */
+}
+
+
+/* Dark Overlay for Readability */
+
+.map-page-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+/* Ensure Content is Above Overlay */
+
+.map-page-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Map Container */
+
+.map-container {
+    width: 85%;
+    max-width: 900px;
+    height: 450px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(30, 30, 47, 0.8);
+    /* Dark transparent background */
+    backdrop-filter: blur(8px);
+    box-shadow: 0px 5px 20px rgba(0, 255, 255, 0.3);
+    animation: fadeIn 0.8s ease-in-out, pulseShadow 4s infinite alternate ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+}
+
+
+/* Map Frame */
+
+.map {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+
+/* Hover Effect */
+
+.map-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0px 10px 25px rgba(0, 255, 255, 0.6);
+}
+
+
+/* Title */
+
+.map-title {
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    animation: slideInLeft 1.2s ease-out;
+}
+
+
+/* Confirm Button */
+
+.confirm-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0f9b0f, #8cc084);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+    letter-spacing: 0.8px;
+    box-shadow: 0px 5px 15px rgba(15, 155, 15, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Button Hover Effect */
+
+.confirm-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 8px 20px rgba(15, 155, 15, 0.6);
+}
+
+
+/* Button Pulse Animation */
+
+.confirm-btn::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 50%);
+    top: -50%;
+    left: -50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.confirm-btn:hover::before {
+    opacity: 1;
+    animation: pulse 1s infinite alternate ease-in-out;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulseShadow {
+    from {
+        box-shadow: 0px 5px 15px rgba(0, 255, 255, 0.3);
+    }
+    to {
+        box-shadow: 0px 10px 25px rgba(0, 255, 255, 0.6);
+    }
+}
+
+@keyframes bgParallax {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center bottom;
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}

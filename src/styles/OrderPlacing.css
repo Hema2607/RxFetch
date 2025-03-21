@@ -1,0 +1,146 @@
+/* Order Container with Parallax Background */
+
+.order-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    background: url("../assets/image.png") no-repeat center center/cover;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    animation: bgParallax 20s infinite alternate ease-in-out;
+    font-family: "Arial", sans-serif;
+    color: white;
+}
+
+
+/* Dark Overlay for Readability */
+
+.order-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+/* Ensure Content is Above Overlay */
+
+.order-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Headings with Animation */
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    -webkit-text-stroke: 1px black;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
+    -webkit-text-stroke: 0.8px black;
+}
+
+
+/* List Items */
+
+ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.2rem;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px;
+    margin: 5px auto;
+    border-radius: 8px;
+    width: 60%;
+    transition: transform 0.3s ease-in-out;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+li:hover {
+    transform: scale(1.05);
+}
+
+
+/* Error Message */
+
+.error-msg {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+
+/* Button Styles with Glow Effect */
+
+.edit-location,
+.confirm-btn {
+    background: linear-gradient(135deg, #22c55e, #16a085);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 255, 150, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.edit-location:hover,
+.confirm-btn:hover {
+    background: linear-gradient(135deg, #1abc9c, #0f9b58);
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0, 255, 150, 0.6);
+}
+
+
+/* Disabled Button */
+
+.confirm-btn:disabled {
+    background: gray;
+    cursor: not-allowed;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bgParallax {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center bottom;
+    }
+}

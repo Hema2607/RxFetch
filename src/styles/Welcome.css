@@ -1,0 +1,180 @@
+/* Full-screen Welcome Page */
+
+.welcome-container {
+    height: 100vh;
+    background: url("../assets/image.png") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: bgParallax 20s infinite alternate ease-in-out;
+}
+
+
+/* Dark Overlay */
+
+.welcome-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+/* Ensure Content is Above Overlay */
+
+.welcome-container h1,
+.welcome-container p,
+.welcome-container .button-group {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Welcome Heading (Using Auth-Left Styling) */
+
+.welcome-container h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 4px 4px 10px rgba(0, 255, 150, 0.9);
+    -webkit-text-stroke: 1px rgba(0, 255, 150, 0.8);
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-clip: padding-box;
+    position: relative;
+    animation: slideInLeft 1.2s ease-out;
+}
+
+
+/* Subtext - Styled Like Auth-Left */
+
+.welcome-container p {
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 3px 3px 8px rgba(0, 255, 150, 0.8);
+    -webkit-text-stroke: 0.6px rgba(0, 255, 150, 0.9);
+    letter-spacing: 0.5px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+
+/* Button Group */
+
+.button-group {
+    display: flex;
+    gap: 20px;
+    animation: slideInRight 1.2s ease-out;
+}
+
+
+/* Buttons - Same Green Gradient */
+
+.button-group button {
+    background: linear-gradient(135deg, #22c55e, #16a085);
+    color: white;
+    border: 3px solid transparent;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 5px 15px rgba(0, 255, 150, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Button Hover - Neon Glow */
+
+.button-group button:hover {
+    background: linear-gradient(135deg, #1abc9c, #0f9b58);
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0, 255, 150, 0.6);
+}
+
+
+/* Button Green Glow Border */
+
+.button-group button::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #22c55e, #16a085);
+    z-index: -1;
+    filter: blur(5px);
+    opacity: 0.8;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .welcome-container h1 {
+        font-size: 2.5rem;
+    }
+    .welcome-container p {
+        font-size: 1.2rem;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .button-group button {
+        width: 100%;
+    }
+}
+
+
+/* Animations */
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bgParallax {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center bottom;
+    }
+}

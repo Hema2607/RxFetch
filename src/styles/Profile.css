@@ -1,0 +1,181 @@
+/* Full-Screen Profile Container with Parallax Background */
+
+.profile-container {
+    background: url("../assets/image.png") no-repeat center center/cover;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 20px;
+    animation: bgParallax 15s infinite alternate ease-in-out;
+}
+
+
+/* Dark Overlay for Readability */
+
+.profile-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+/* Ensure Content is Above Overlay */
+
+.profile-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Title */
+
+.profile-container h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.5);
+    animation: fadeIn 1s ease-in-out;
+}
+
+
+/* Profile Card with Glassmorphism */
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(0, 255, 255, 0.4);
+    width: 400px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 1s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+
+/* Profile Picture */
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    margin-bottom: 15px;
+    animation: slideIn 1s ease-in-out;
+}
+
+
+/* Profile Info */
+
+.profile-card p {
+    font-size: 18px;
+    margin: 12px 0;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+
+/* Profile Info Hover */
+
+.profile-card p:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+
+/* Hover Effects */
+
+.profile-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+
+/* Edit Profile Button */
+
+.profile-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #0f9b0f, #8cc084);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+/* Button Hover */
+
+.profile-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0, 255, 0, 0.4);
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Background Animation */
+
+@keyframes bgParallax {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center bottom;
+    }
+}
+
+
+/* Responsive for Mobile */
+
+@media (max-width: 768px) {
+    .profile-card {
+        width: 90%;
+    }
+}

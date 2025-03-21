@@ -1,0 +1,168 @@
+/* Full-screen Pharmacy List Page with Parallax Background */
+
+.pharmacy-list-container {
+    background: url("../assets/image.png") no-repeat center center;
+    background-size: cover;
+    /* Keep it same as Auth.css */
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 20px;
+    animation: bgParallax 20s infinite alternate ease-in-out;
+}
+
+
+/* Dark Overlay for Readability */
+
+.pharmacy-list-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+
+
+/* Ensure Content is Above Overlay */
+
+.pharmacy-list-container>* {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Pharmacy List Box */
+
+.pharmacy-box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 25px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    animation: fadeIn 1s ease-in-out;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+
+/* Title */
+
+.pharmacy-box h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 255, 150, 0.6);
+}
+
+
+/* Pharmacy List */
+
+.pharmacy-list {
+    list-style: none;
+    padding: 0;
+}
+
+
+/* Pharmacy Item */
+
+.pharmacy-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Hover Effect */
+
+.pharmacy-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 255, 150, 0.6);
+}
+
+
+/* Order Button */
+
+button {
+    background: linear-gradient(45deg, #4caf50, #66bb6a);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+/* Button Hover */
+
+button:hover {
+    background: linear-gradient(45deg, #66bb6a, #81c784);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+
+/* No Pharmacies Found */
+
+.no-pharmacies {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffcc00;
+    text-transform: uppercase;
+}
+
+
+/* Animations */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Background Animation */
+
+@keyframes bgParallax {
+    from {
+        background-position: center top;
+    }
+    to {
+        background-position: center bottom;
+    }
+}
+
+
+/* Responsive for Mobile */
+
+@media (max-width: 768px) {
+    .pharmacy-box {
+        width: 100%;
+    }
+}
